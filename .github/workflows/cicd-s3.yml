@@ -1,0 +1,31 @@
+name: Docker deploy aws s3
+
+on:
+  push:
+
+env:
+  AWS_REGION: us-east-1
+
+jobs:
+  deploy: 
+     runs-on: ubuntu-latest
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+ 
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+   - name: Configure AMS Credentials
+     uses: aws-actions/configure-aws-credentials@v1
+     with:
+      aws-access-key-id: ${( secrets.AMS_ACCESS_KEY-ID )}
+      aws-secret-access-key: ${( secrets.AMS_SECRET_ACCESS_KEY )}
+      aws-session-token: ${( secrets.AMS_SESSION_TOKEN }}
+       AWS_REGION: ${{ env.AWS_REGION }}
+  - NEME: Deploy to AWS S3
+    run: aws s3 cp ./index.html s3://
+
