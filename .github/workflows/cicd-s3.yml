@@ -19,7 +19,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}      # Sintaxis corregida
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ env.AWS_REGION }}  # Asegúrate de que coincida con el 'env'
+          aws-region: ${{ env.AWS_REGION }}  # Asegúrate de que coincida con el 'env
 
       - name: Deploy to AWS S3
         run: aws s3 cp ./index.html s3://bucketcav1la2025 
